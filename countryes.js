@@ -1,5 +1,5 @@
 // console.log('here some js file ')
-
+ 
 const  loadCountryes = () => {
     fetch (`https://restcountries.com/v3.1/all`)
     .then (res => res.json())
@@ -8,12 +8,15 @@ const  loadCountryes = () => {
 
 const displayCountryes = countries => {
     // console.log(countries);
-    const  allcountriesHTML = countries.map(countries => getCountriesHTML())
+    const  allcountriesHTML = countries.map(country => getCountriesHTML(country))
 
-    console.log(allcountriesHTML)
+    // console.log(allcountriesHTML)
+
+    const conteinor = document.getElementById('countries')
+    conteinor.innerHTML= allcountriesHTML.join(' ')
 }
 
-const getCountriesHTML = countries => {
+const getCountriesHTML = country => {
     return`
     <div>
         <h2>${country.name.common}</h2>
